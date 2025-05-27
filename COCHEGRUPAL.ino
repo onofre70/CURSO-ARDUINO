@@ -1,5 +1,8 @@
 #include <SoftwareSerial.h>
 SoftwareSerial BT(10,11);
+#include <Servo.h>
+Servo servo;
+int pinS = 9;
 
 char leer = 0;
 
@@ -9,6 +12,7 @@ void setup() {
  pinMode(5, OUTPUT);
  pinMode(6, OUTPUT);
  pinMode(7, OUTPUT);
+ servo.attach (pinS);
 }
 
 void loop() {
@@ -35,32 +39,46 @@ void loop() {
      case 'S':
      Detener();
      break;
+
+     case '1':
+     Atacar();
+     break; 
+
+     case '2':
+     Atacar2();
+     break; 
+
+     case '3':
+     Atacar3();
+     break; 
+
+     
    }
  }
 }
 
-void Adelante(){
+void Atras(){
   digitalWrite(4, HIGH);
   digitalWrite(5, LOW);
   digitalWrite(6, HIGH);
   digitalWrite(7, LOW);
 }
    
-void Atras(){
+void Adelante(){
   digitalWrite(4, LOW);
   digitalWrite(5, HIGH);
   digitalWrite(6, LOW);
   digitalWrite(7, HIGH);
 }
 
-void Derecha(){
+void Izquierda(){
   digitalWrite(4, LOW);
   digitalWrite(5, HIGH);
   digitalWrite(6, HIGH);
   digitalWrite(7, LOW);
 }
 
-void Izquierda(){
+void Derecha(){
   digitalWrite(4, HIGH);
   digitalWrite(5, LOW);
   digitalWrite(6, LOW);
@@ -72,4 +90,13 @@ void Detener(){
   digitalWrite(5, LOW);
   digitalWrite(6, LOW);
   digitalWrite(7, LOW);
+}
+void Atacar(){
+  servo.write(0);
+}
+  void Atacar2(){
+  servo.write(90);
+  }
+void Atacar3(){
+  servo.write(180);  
 }
