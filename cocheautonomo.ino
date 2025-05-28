@@ -7,7 +7,7 @@
 #define maximun_distance 200
 
 Servo servo;
-boolean goesForward = false;
+boolean goesForward = true;
 int pinS = 9;
 int distance = 100;
  
